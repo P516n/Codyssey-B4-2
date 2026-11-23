@@ -1,0 +1,22 @@
+services:
+  agent-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agent-leak-tester
+    ports:
+      - "15034:15034"
+    environment:
+      - AGENT_HOME=/home/appuser/agent-app
+      - AGENT_PORT=15034
+      - AGENT_UPLOAD_DIR=/home/appuser/agent-app/upload_files
+      - AGENT_KEY_PATH=/home/appuser/agent-app/api_keys
+      - AGENT_LOG_DIR=/home/appuser/agent-app/logs
+      # 시나리오별 제어 환경변수 (.env 파일 또는 셸 환경변수로 오버라이드 가능)
+      - MEMORY_LIMIT=${MEMORY_LIMIT:-128}
+      - CPU_MAX_OCCUPY=${CPU_MAX_OCCUPY:-50}
+      - MULTI_THREAD_ENABLE=${MULTI_THREAD_ENABLE:-true}
+    volumes:
+      - ./logs:/home/appuser/agent-app/logs
+      - ./scripts:/home/appuser/scripts
+    restart: "no"
