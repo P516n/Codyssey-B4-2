@@ -19,10 +19,10 @@
 
 수집된 터미널 실행 로그, 관제 로그(`monitor.sh`), 시스템 유틸리티 출력(`ps`, `top`)을 Before & After에 맞추어 보관하고 있습니다.
 
-* **[OOM 증거]** [Before (128MB, 16초 만에 사망)](./evidence/01_oom/before_memory_limit_128mb.txt) | [After (256MB, 34초로 생존 시간 2배 증가)](./evidence/01_oom/after_memory_limit_256mb.txt)
-* **[Deadlock 증거]** [Before (교착 상태로 3개 스레드 무한 대기)](./evidence/02_deadlock/before_deadlock_reproduced.txt) | [After (단일 스레드 정상 완료)](./evidence/02_deadlock/after_deadlock_avoided.txt)
-* **[CPU Spike 증거]** [Before (임계치 위반으로 Watchdog SIGTERM 종료)](./evidence/03_cpu_spike/before_cpu_watchdog_terminated.txt) | [After (20% 제한 쿨다운 순환 생존)](./evidence/03_cpu_spike/after_cpu_healthy_cooldown.txt)
-* **[보너스 과제 증거]** [스케줄링 태스크 순차 실행 타임스탬프 로그](./evidence/04_bonus_scheduling/scheduling_task_logs.txt)
+* **[OOM 증거]** [Before (128MB, 16초 만에 사망)](./evidence/01_oom/before_memory_limit_128mb.md) | [After (256MB, 34초로 생존 시간 2배 증가)](./evidence/01_oom/after_memory_limit_256mb.md)
+* **[Deadlock 증거]** [Before (교착 상태로 3개 스레드 무한 대기)](./evidence/02_deadlock/before_deadlock_reproduced.md) | [After (단일 스레드 정상 완료)](./evidence/02_deadlock/after_deadlock_avoided.md)
+* **[CPU Spike 증거]** [Before (임계치 위반으로 Watchdog SIGTERM 종료)](./evidence/03_cpu_spike/before_cpu_watchdog_terminated.md) | [After (20% 제한 쿨다운 순환 생존)](./evidence/03_cpu_spike/after_cpu_healthy_cooldown.md)
+* **[보너스 과제 증거]** [스케줄링 태스크 순차 실행 타임스탬프 로그](./evidence/04_bonus_scheduling/scheduling_task_logs.md)
 * **[원본 로그]** [터미널 실행 로그](./logs/term_run.txt) | [관제 모니터링 로그](./logs/term_monitor.txt) | [프로세스/스레드 진단 로그](./logs/term_ps.txt)
 
 ---

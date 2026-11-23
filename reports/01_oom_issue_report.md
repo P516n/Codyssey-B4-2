@@ -74,7 +74,7 @@ MEMORY_LIMIT=256 /app/run.sh
 | **관제 최대 점유 RSS** | 142.4 MB | 267.7 MB | 물리 메모리 점유율 동반 상승 확인 |
 | **종료 메시지** | `150MB >= 128MB` 초과 종료 | `275MB >= 256MB` 초과 종료 | MemoryGuard 정책 정상 동작 확인 |
 
-> 📌 증거 원본 파일: [evidence/01_oom/before_memory_limit_128mb.txt](../evidence/01_oom/before_memory_limit_128mb.txt), [evidence/01_oom/after_memory_limit_256mb.txt](../evidence/01_oom/after_memory_limit_256mb.txt)
+> 📌 증거 원본 파일: [evidence/01_oom/before_memory_limit_128mb.md](../evidence/01_oom/before_memory_limit_128mb.md), [evidence/01_oom/after_memory_limit_256mb.md](../evidence/01_oom/after_memory_limit_256mb.md)
 
 ### ③ 근본적 해결을 위한 추가 제안 (코드 레벨)
 * **메모리 참조 해제**: `MemoryWorker` 루프 내부에서 사용이 끝난 임시 캐시 또는 리스트 객체에 대해 `del`, `.clear()`, 또는 `.pop()`을 명시적으로 호출하고 순환 참조를 제거해야 합니다.

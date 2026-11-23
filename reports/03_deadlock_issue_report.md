@@ -98,7 +98,7 @@ MEMORY_LIMIT=512 MULTI_THREAD_ENABLE=false /app/run.sh
 2026-11-23 02:48:17 [INFO] [Scheduler] All tasks completed.
 ```
 
-> 📌 증거 원본 파일: [evidence/02_deadlock/before_deadlock_reproduced.txt](../evidence/02_deadlock/before_deadlock_reproduced.txt), [evidence/02_deadlock/after_deadlock_avoided.txt](../evidence/02_deadlock/after_deadlock_avoided.txt)
+> 📌 증거 원본 파일: [evidence/02_deadlock/before_deadlock_reproduced.md](../evidence/02_deadlock/before_deadlock_reproduced.md), [evidence/02_deadlock/after_deadlock_avoided.md](../evidence/02_deadlock/after_deadlock_avoided.md)
 
 ### ③ 근본적 해결을 위한 추가 제안 (코드 레벨)
 * **락 획득 순서의 전역 일관성 유지 (Lock Ordering)**: 모든 스레드가 자원을 요청할 때 반드시 동일한 순서(예: 항상 `Shared_Memory_A` ➔ `Socket_Pool_B` 순)로만 락을 요청하도록 강제하면 순환 대기(Circular Wait)가 원천 차단됩니다.

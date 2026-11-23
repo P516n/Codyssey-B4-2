@@ -31,7 +31,7 @@
 2026-11-23 02:48:17,665 [INFO] [Scheduler] All tasks completed.
 ```
 
-> 📌 증거 원본 파일: [evidence/04_bonus_scheduling/scheduling_task_logs.txt](../evidence/04_bonus_scheduling/scheduling_task_logs.txt)
+> 📌 증거 원본 파일: [evidence/04_bonus_scheduling/scheduling_task_logs.md](../evidence/04_bonus_scheduling/scheduling_task_logs.md)
 
 ---
 

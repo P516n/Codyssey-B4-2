@@ -91,7 +91,7 @@ MEMORY_LIMIT=512 MULTI_THREAD_ENABLE=false CPU_MAX_OCCUPY=20 /app/run.sh
 2026-11-23 02:59:35 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
 ```
 
-> 📌 증거 원본 파일: [evidence/03_cpu_spike/before_cpu_watchdog_terminated.txt](../evidence/03_cpu_spike/before_cpu_watchdog_terminated.txt), [evidence/03_cpu_spike/after_cpu_healthy_cooldown.txt](../evidence/03_cpu_spike/after_cpu_healthy_cooldown.txt)
+> 📌 증거 원본 파일: [evidence/03_cpu_spike/before_cpu_watchdog_terminated.md](../evidence/03_cpu_spike/before_cpu_watchdog_terminated.md), [evidence/03_cpu_spike/after_cpu_healthy_cooldown.md](../evidence/03_cpu_spike/after_cpu_healthy_cooldown.md)
 
 ### ③ 근본적 해결을 위한 추가 제안 (코드 레벨)
 * **적응형 Rate Limiting / Throttling**: 고연산 작업 루프에 `time.sleep()` 기반의 적응형 지연(backoff)을 부여하여 CPU 사용률이 일정 수준을 넘지 않도록 능동 조절.
