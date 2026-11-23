@@ -1,0 +1,77 @@
+================================================================================
+[EVIDENCE: DEADLOCK-02] AFTER - MULTI_THREAD_ENABLE=false (Deadlock 회피)
+================================================================================
+1. 실행 조건
+--------------------------------------------------------------------------------
+- MEMORY_LIMIT        : 512 MB
+- CPU_MAX_OCCUPY      : 50 %
+- MULTI_THREAD_ENABLE : false (동시성 락 경쟁 비활성화)
+- 실행 일시           : 2026-11-23 02:48:14
+
+--------------------------------------------------------------------------------
+2. 애플리케이션 실행 로그 (term_run.txt 발췌)
+--------------------------------------------------------------------------------
+appuser@123b82407037:~$ MEMORY_LIMIT=512 MULTI_THREAD_ENABLE=false /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 512 MB
+   CPU_MAX_OCCUPY      : 50 %
+   MULTI_THREAD_ENABLE : false
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+[2/6] Verifying Environment Variables     [OK]
+[3/6] Checking Required Files             [OK]
+[4/6] Checking Port Availability          [OK]
+[5/6] Verifying Log Permission            [OK]
+[6/6] Verifying Mission Environment       [OK]
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 02:48:14,858 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 02:48:14,860 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 512MB                [ OK ]
+ [ CPU    ] Limit: 50%                  [ OK ]
+ [ THREAD ] Concurrency: False          [ OK ]
+--------------------------------------------------
+ >>> SYSTEM STATUS: STABLE. STARTING WORKLOAD MONITORING...
+==================================================
+
+2026-11-23 02:48:16,869 [INFO] >>> Scenario Selected: [Healthy System Monitoring]
+
+>>> [SYSTEM] ALL CONFIGURATIONS OPTIMAL. RUNNING STABILITY TEST... <<<
+
+2026-11-23 02:48:16,872 [INFO] [Scheduler] Task Scheduler Initialized.
+2026-11-23 02:48:16,874 [INFO] [Scheduler] Registered Tasks: ['Thread-A', 'Thread-B', 'Thread-C']
+2026-11-23 02:48:16,875 [INFO] [Scheduler] Starting task execution...
+2026-11-23 02:48:16,878 [INFO] [Thread-A] Task Started. Calculating... (20%)
+2026-11-23 02:48:16,930 [INFO] [Thread-A] Calculating... (40%)
+2026-11-23 02:48:16,983 [INFO] [Thread-A] Calculating... (60%)
+2026-11-23 02:48:17,036 [INFO] [Thread-A] Calculating... (80%)
+2026-11-23 02:48:17,088 [INFO] [Thread-A] Task Completed. (100%)
+2026-11-23 02:48:17,140 [INFO] [Thread-B] Task Started. Calculating... (20%)
+2026-11-23 02:48:17,193 [INFO] [Thread-B] Calculating... (40%)
+2026-11-23 02:48:17,245 [INFO] [Thread-B] Calculating... (60%)
+2026-11-23 02:48:17,298 [INFO] [Thread-B] Calculating... (80%)
+2026-11-23 02:48:17,350 [INFO] [Thread-B] Task Completed. (100%)
+2026-11-23 02:48:17,403 [INFO] [Thread-C] Task Started. Calculating... (20%)
+2026-11-23 02:48:17,455 [INFO] [Thread-C] Calculating... (40%)
+2026-11-23 02:48:17,508 [INFO] [Thread-C] Calculating... (60%)
+2026-11-23 02:48:17,560 [INFO] [Thread-C] Calculating... (80%)
+2026-11-23 02:48:17,613 [INFO] [Thread-C] Task Completed. (100%)
+2026-11-23 02:48:17,665 [INFO] [Scheduler] All tasks completed.
+
+--------------------------------------------------------------------------------
+3. Before & After 비교 분석 요약
+--------------------------------------------------------------------------------
+- Before (MULTI_THREAD_ENABLE=true) :
+  * 2개의 워커 스레드가 자원 락을 상호 획득한 후 상대방 자원을 요구하며 무한 대기 (Status: BLOCKED)
+  * CPU 0.0%, 메모리 17.5MB로 작업이 완전히 중단되는 무응답 장애 발생
+- After (MULTI_THREAD_ENABLE=false) :
+  * 동시성 자원 경쟁 환경을 배제하고 단일 스케줄러 흐름으로 전환
+  * Thread-A (100%) -> Thread-B (100%) -> Thread-C (100%) 순서대로 모든 작업이 정상 완료됨
+  * 교착 상태의 발생 조건인 점유 대기(Hold & Wait) 및 순환 대기(Circular Wait)가 원천 차단됨을 입증

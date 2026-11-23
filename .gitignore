@@ -1,10 +1,5 @@
 # Agent workspace directory
 .agents/
 
-# Monitoring & Application logs
-*.log
-logs/
-monitor.log
-
 # Environment files
 .env

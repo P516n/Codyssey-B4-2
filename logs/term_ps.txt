@@ -1,0 +1,130 @@
+appuser@123b82407037:~$ ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+appuser        1       0  0 Nov22 ?        00:00:00 sleep infinity
+appuser       13       0  0 00:48 pts/0    00:00:00 bash
+appuser       21       0  0 00:48 pts/1    00:00:00 bash
+appuser     1035       1  0 00:54 ?        00:00:00 [bash] <defunct>
+appuser     1060       1  0 00:55 ?        00:00:00 [bash] <defunct>
+appuser     1081       1  0 00:56 ?        00:00:06 bash /home/appuser/scripts/monitor.sh
+appuser     1082       1  0 00:56 ?        00:00:00 [bash] <defunct>
+appuser    25858       0  0 02:16 pts/2    00:00:00 bash
+appuser    29645    1081  0 02:28 ?        00:00:00 sleep 2
+appuser    29646   25858  0 02:28 pts/2    00:00:00 ps -ef
+appuser@123b82407037:~$ ps -ef | grep agent
+appuser    34932   34930  0 02:46 pts/0    00:00:00 /app/bin/agent-leak-app-x86
+appuser    34933   34932  0 02:46 pts/0    00:00:00 /app/bin/agent-leak-app-x86
+appuser    35189   25858  0 02:46 pts/2    00:00:00 grep --color=auto agent
+appuser@123b82407037:~$ ps -L -p 34933 -o pid,tid,stat,%cpu,%mem,comm
+    PID     TID STAT %CPU %MEM COMMAND
+  34933   34933 SNl+  0.1  0.2 agent-leak-app-
+  34933   35018 SNl+  0.0  0.2 agent-leak-app-
+  34933   35019 SNl+  0.0  0.2 agent-leak-app-
+appuser@123b82407037:~$ top -b -n 1 -H -p 34933
+top - 02:47:32 up  3:08,  0 user,  load average: 0.07, 0.02, 0.00
+Threads:   3 total,   0 running,   3 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.8 sy,  0.0 ni, 99.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   6602.8 total,   5593.8 free,    738.3 used,    436.2 buff/cache
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   5864.4 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+  34933 appuser   30  10  170152  17916   9548 S   0.0   0.3   0:00.07 agent-leak-app-
+  35018 appuser   30  10  170152  17916   9548 S   0.0   0.3   0:00.00 agent-leak-app-
+  35019 appuser   30  10  170152  17916   9548 S   0.0   0.3   0:00.00 agent-leak-app-
+appuser@123b82407037:~$ ps -L -p 36371
+    PID     LWP TTY          TIME CMD
+  36371   36371 pts/0    00:00:00 agent-leak-app-
+  36371   36428 pts/0    00:00:00 agent-leak-app-
+  36371   36429 pts/0    00:00:00 agent-leak-app-
+appuser@123b82407037:~$
+
+---
+
+appuser@123b82407037:~$ top -b -n 1 | head -n 20
+top - 02:59:58 up  3:20,  0 user,  load average: 0.00, 0.00, 0.00
+Tasks:  16 total,   1 running,  12 sleeping,   0 stopped,   3 zombie
+%Cpu(s):  0.0 us,  0.8 sy,  0.0 ni, 99.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   6602.8 total,   5160.5 free,   1185.6 used,    422.1 buff/cache
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   5417.2 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 appuser   20   0    2708   1548   1448 S   0.0   0.0   0:00.04 sleep
+     13 appuser   20   0    4600   4072   3460 S   0.0   0.1   0:00.11 bash
+     21 appuser   20   0    4600   3912   3300 S   0.0   0.1   0:00.04 bash
+   1035 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+   1060 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+   1081 appuser   20   0    4336   3504   3224 S   0.0   0.1   0:08.80 bash
+   1082 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+  25858 appuser   20   0    4600   3984   3372 S   0.0   0.1   0:00.05 bash
+  40129 appuser   20   0    4336   3560   3268 S   0.0   0.1   0:00.10 bash
+  40162 appuser   20   0    4336   3432   3168 S   0.0   0.1   0:00.00 bash
+  40164 appuser   20   0    2908   2156   1944 S   0.0   0.0   0:00.11 agent-l+
+  40179 appuser   30  10  632048 479148   9776 S   0.0   7.1   0:00.93 agent-l+
+  40938 appuser   20   0    2708   1556   1460 S   0.0   0.0   0:00.00 sleep
+appuser@123b82407037:~$ top -b -n 1 | head -n 20
+top - 03:01:01 up  3:21,  0 user,  load average: 0.03, 0.01, 0.00
+Tasks:  16 total,   1 running,  12 sleeping,   0 stopped,   3 zombie
+%Cpu(s):  0.0 us,  0.8 sy,  0.0 ni, 99.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   6602.8 total,   5290.5 free,   1055.5 used,    422.2 buff/cache
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   5547.3 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 appuser   20   0    2708   1548   1448 S   0.0   0.0   0:00.04 sleep
+     13 appuser   20   0    4600   4072   3460 S   0.0   0.1   0:00.11 bash
+     21 appuser   20   0    4600   3912   3300 S   0.0   0.1   0:00.04 bash
+   1035 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+   1060 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+   1081 appuser   20   0    4336   3504   3224 S   0.0   0.1   0:08.90 bash
+   1082 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+  25858 appuser   20   0    4600   3984   3372 S   0.0   0.1   0:00.05 bash
+  40129 appuser   20   0    4336   3560   3268 S   0.0   0.1   0:00.21 bash
+  41293 appuser   20   0    4336   3240   2976 S   0.0   0.0   0:00.00 bash
+  41295 appuser   20   0    2908   2124   1912 S   0.0   0.0   0:00.10 agent-l+
+  41296 appuser   30  10  478424 325504   9748 S   0.0   4.8   0:00.61 agent-l+
+  41802 appuser   20   0    2708   1600   1500 S   0.0   0.0   0:00.00 sleep
+appuser@123b82407037:~$
+
+---
+
+
+appuser@123b82407037:~$ top -b -n 1 | head -n 20
+top - 03:06:45 up  3:27,  0 user,  load average: 0.08, 0.02, 0.01
+Tasks:  16 total,   1 running,  12 sleeping,   0 stopped,   3 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   6602.8 total,   5671.3 free,    752.1 used,    344.8 buff/cache
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   5850.7 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 appuser   20   0    2708   1548   1448 S   0.0   0.0   0:00.04 sleep
+     13 appuser   20   0    4600   4072   3460 S   0.0   0.1   0:00.11 bash
+     21 appuser   20   0    4600   3912   3300 S   0.0   0.1   0:00.04 bash
+   1035 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+   1060 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+   1081 appuser   20   0    4336   3504   3224 S   0.0   0.1   0:09.35 bash
+   1082 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+  25858 appuser   20   0    4600   3984   3372 S   0.0   0.1   0:00.05 bash
+  43370 appuser   20   0    4336   3460   3168 S   0.0   0.1   0:00.11 bash
+  43895 appuser   20   0    4336   3480   3212 S   0.0   0.1   0:00.00 bash
+  43897 appuser   20   0    2908   2056   1844 S   0.0   0.0   0:00.08 agent-l+
+  43898 appuser   30  10   23712  18020   9656 S   0.0   0.3   0:00.25 agent-l+
+  44234 appuser   20   0    2708   1524   1428 S   0.0   0.0   0:00.00 sleep
+appuser@123b82407037:~$ top -b -n 1 | head -n 20
+top - 03:06:48 up  3:27,  0 user,  load average: 0.07, 0.02, 0.00
+Tasks:  16 total,   1 running,  12 sleeping,   0 stopped,   3 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   6602.8 total,   5669.8 free,    753.5 used,    344.8 buff/cache
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   5849.3 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 appuser   20   0    2708   1548   1448 S   0.0   0.0   0:00.04 sleep
+     13 appuser   20   0    4600   4072   3460 S   0.0   0.1   0:00.11 bash
+     21 appuser   20   0    4600   3912   3300 S   0.0   0.1   0:00.04 bash
+   1035 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+   1060 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+   1081 appuser   20   0    4336   3504   3224 S   0.0   0.1   0:09.35 bash
+   1082 appuser   20   0       0      0      0 Z   0.0   0.0   0:00.00 bash
+  25858 appuser   20   0    4600   3984   3372 S   0.0   0.1   0:00.05 bash
+  43370 appuser   20   0    4336   3460   3168 S   0.0   0.1   0:00.11 bash
+  43895 appuser   20   0    4336   3480   3212 S   0.0   0.1   0:00.00 bash
+  43897 appuser   20   0    2908   2056   1844 S   0.0   0.0   0:00.08 agent-l+
+  43898 appuser   30  10   23712  18020   9656 S   0.0   0.3   0:00.30 agent-l+
+  44278 appuser   20   0    2708   1560   1464 S   0.0   0.0   0:00.00 sleep

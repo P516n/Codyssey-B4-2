@@ -1,0 +1,827 @@
+appuser@123b82407037:~$ /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 128 MB
+   CPU_MAX_OCCUPY      : 50 %
+   MULTI_THREAD_ENABLE : true
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=128MB, CPU_MAX_OCCUPY=50%, MULTI_THREAD_ENABLE=True
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 00:48:28,455 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 00:48:28,456 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 128MB                [ WARNING: Recommend Over 256MB ]
+ [ CPU    ] Limit: 50%                  [ OK ]
+ [ THREAD ] Concurrency: True           [ WARNING ]
+--------------------------------------------------
+ >>> SYSTEM WARNING: POTENTIAL DEADLOCK IN CONCURRENT MODE.
+==================================================
+
+2026-11-23 00:48:30,500 [INFO] [MemoryWorker] Current Heap: 25MB
+2026-11-23 00:48:33,553 [INFO] [MemoryWorker] Current Heap: 50MB
+2026-11-23 00:48:36,606 [INFO] [MemoryWorker] Current Heap: 75MB
+2026-11-23 00:48:39,655 [INFO] [MemoryWorker] Current Heap: 100MB
+2026-11-23 00:48:42,713 [INFO] [MemoryWorker] Current Heap: 125MB
+2026-11-23 00:48:45,764 [INFO] [MemoryWorker] Current Heap: 150MB
+2026-11-23 00:48:45,767 [CRITICAL] [MemoryGuard] Memory limit exceeded (150MB >= 128MB) / (Recommend Over 256MB)
+2026-11-23 00:48:45,769 [CRITICAL] [MemoryGuard] Self-terminating process 73 to prevent system instability.
+
+
+>>> [SYSTEM] SELF-TERMINATED (Memory Limit Exceeded) <<<
+
+/app/run.sh: line 32:    72 Killed                  "$APP_BIN"
+appuser@123b82407037:~$ MEMORY_LIMIT=256 /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 256 MB
+   CPU_MAX_OCCUPY      : 50 %
+   MULTI_THREAD_ENABLE : true
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=256MB, CPU_MAX_OCCUPY=50%, MULTI_THREAD_ENABLE=True
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 00:49:13,634 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 00:49:13,637 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 256MB                [ WARNING: Recommend Over 256MB ]
+ [ CPU    ] Limit: 50%                  [ OK ]
+ [ THREAD ] Concurrency: True           [ WARNING ]
+--------------------------------------------------
+ >>> SYSTEM WARNING: POTENTIAL DEADLOCK IN CONCURRENT MODE.
+==================================================
+
+2026-11-23 00:49:15,680 [INFO] [MemoryWorker] Current Heap: 25MB
+2026-11-23 00:49:18,730 [INFO] [MemoryWorker] Current Heap: 50MB
+2026-11-23 00:49:21,780 [INFO] [MemoryWorker] Current Heap: 75MB
+2026-11-23 00:49:24,830 [INFO] [MemoryWorker] Current Heap: 100MB
+2026-11-23 00:49:27,881 [INFO] [MemoryWorker] Current Heap: 125MB
+2026-11-23 00:49:30,931 [INFO] [MemoryWorker] Current Heap: 150MB
+2026-11-23 00:49:33,985 [INFO] [MemoryWorker] Current Heap: 175MB
+2026-11-23 00:49:37,039 [INFO] [MemoryWorker] Current Heap: 200MB
+2026-11-23 00:49:40,087 [INFO] [MemoryWorker] Current Heap: 225MB
+2026-11-23 00:49:43,141 [INFO] [MemoryWorker] Current Heap: 250MB
+2026-11-23 00:49:46,192 [INFO] [MemoryWorker] Current Heap: 275MB
+2026-11-23 00:49:46,194 [CRITICAL] [MemoryGuard] Memory limit exceeded (275MB >= 256MB) / (Recommend Over 256MB)
+2026-11-23 00:49:46,196 [CRITICAL] [MemoryGuard] Self-terminating process 278 to prevent system instability.
+
+
+>>> [SYSTEM] SELF-TERMINATED (Memory Limit Exceeded) <<<
+
+/app/run.sh: line 32:   266 Killed                  "$APP_BIN"
+appuser@123b82407037:~$ MEMORY_LIMIT=512 /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 512 MB
+   CPU_MAX_OCCUPY      : 50 %
+   MULTI_THREAD_ENABLE : true
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=512MB, CPU_MAX_OCCUPY=50%, MULTI_THREAD_ENABLE=True
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 00:49:53,715 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 00:49:53,718 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 512MB                [ OK ]
+ [ CPU    ] Limit: 50%                  [ OK ]
+ [ THREAD ] Concurrency: True           [ WARNING ]
+--------------------------------------------------
+ >>> SYSTEM WARNING: POTENTIAL DEADLOCK IN CONCURRENT MODE.
+==================================================
+
+2026-11-23 00:49:55,730 [WARNING] [AgentWorker] Initializing concurrent transaction processors...
+2026-11-23 00:49:55,738 [WARNING] [System] CAUTION: Strict resource locking is enabled.
+2026-11-23 00:50:00,765 [INFO] [Worker-Thread-1] Process Started. Attempting to lock [Shared_Memory_A]...
+2026-11-23 00:50:00,766 [INFO] [AgentWorker][Worker-Thread-2] Process Started. Attempting to lock [Socket_Pool_B]...
+2026-11-23 00:50:00,766 [INFO] [AgentWorker] Waiting for worker threads to complete transactions...
+2026-11-23 00:50:00,774 [INFO] [AgentWorker][Worker-Thread-1] LOCK ACQUIRED: [Shared_Memory_A]. (Holding...)
+2026-11-23 00:50:00,777 [INFO] [AgentWorker][Worker-Thread-2] LOCK ACQUIRED: [Socket_Pool_B]. (Holding...)
+2026-11-23 00:50:00,783 [INFO] [AgentWorker][Worker-Thread-1] Processing critical data in Memory A...
+2026-11-23 00:50:00,784 [INFO] [AgentWorker][Worker-Thread-2] Establishing network connections in Pool B...
+2026-11-23 00:50:02,796 [INFO] [AgentWorker][Worker-Thread-1] Need resource [Socket_Pool_B] to finish job.
+2026-11-23 00:50:02,797 [INFO] [AgentWorker][Worker-Thread-2] Need resource [Shared_Memory_A] to write logs.
+2026-11-23 00:50:02,798 [INFO] [AgentWorker][Worker-Thread-1] WAITING for [Socket_Pool_B]... (Status: BLOCKED)
+2026-11-23 00:50:02,799 [INFO] [AgentWorker][Worker-Thread-2] WAITING for [Shared_Memory_A]... (Status: BLOCKED)
+^C2026-11-23 00:51:06,346 [INFO] User interrupted process. Shutting down gracefully...
+
+^CException ignored in sys.unraisablehook: <built-in function unraisablehook>
+KeyboardInterrupt
+appuser@123b82407037:~$
+
+---
+
+
+
+appuser@123b82407037:~$ /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 128 MB
+   CPU_MAX_OCCUPY      : 50 %
+   MULTI_THREAD_ENABLE : true
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=128MB, CPU_MAX_OCCUPY=50%, MULTI_THREAD_ENABLE=True
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 02:07:18,027 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 02:07:18,029 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 128MB                [ WARNING: Recommend Over 256MB ]
+ [ CPU    ] Limit: 50%                  [ OK ]
+ [ THREAD ] Concurrency: True           [ WARNING ]
+--------------------------------------------------
+ >>> SYSTEM WARNING: POTENTIAL DEADLOCK IN CONCURRENT MODE.
+==================================================
+
+2026-11-23 02:07:20,074 [INFO] [MemoryWorker] Current Heap: 25MB
+2026-11-23 02:07:23,111 [INFO] [MemoryWorker] Current Heap: 50MB
+2026-11-23 02:07:26,162 [INFO] [MemoryWorker] Current Heap: 75MB
+2026-11-23 02:07:29,207 [INFO] [MemoryWorker] Current Heap: 100MB
+2026-11-23 02:07:32,261 [INFO] [MemoryWorker] Current Heap: 125MB
+2026-11-23 02:07:35,311 [INFO] [MemoryWorker] Current Heap: 150MB
+2026-11-23 02:07:35,312 [CRITICAL] [MemoryGuard] Memory limit exceeded (150MB >= 128MB) / (Recommend Over 256MB)
+2026-11-23 02:07:35,314 [CRITICAL] [MemoryGuard] Self-terminating process 22327 to prevent system instability.
+
+
+>>> [SYSTEM] SELF-TERMINATED (Memory Limit Exceeded) <<<
+
+/app/run.sh: line 32: 22326 Killed                  "$APP_BIN"
+appuser@123b82407037:~$ MEMORY_LIMIT=256 /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 256 MB
+   CPU_MAX_OCCUPY      : 50 %
+   MULTI_THREAD_ENABLE : true
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=256MB, CPU_MAX_OCCUPY=50%, MULTI_THREAD_ENABLE=True
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 02:07:51,384 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 02:07:51,386 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 256MB                [ WARNING: Recommend Over 256MB ]
+ [ CPU    ] Limit: 50%                  [ OK ]
+ [ THREAD ] Concurrency: True           [ WARNING ]
+--------------------------------------------------
+ >>> SYSTEM WARNING: POTENTIAL DEADLOCK IN CONCURRENT MODE.
+==================================================
+
+2026-11-23 02:07:53,456 [INFO] [MemoryWorker] Current Heap: 25MB
+2026-11-23 02:07:56,503 [INFO] [MemoryWorker] Current Heap: 50MB
+2026-11-23 02:07:59,552 [INFO] [MemoryWorker] Current Heap: 75MB
+2026-11-23 02:08:02,600 [INFO] [MemoryWorker] Current Heap: 100MB
+2026-11-23 02:08:05,655 [INFO] [MemoryWorker] Current Heap: 125MB
+2026-11-23 02:08:08,707 [INFO] [MemoryWorker] Current Heap: 150MB
+2026-11-23 02:08:11,758 [INFO] [MemoryWorker] Current Heap: 175MB
+2026-11-23 02:08:14,806 [INFO] [MemoryWorker] Current Heap: 200MB
+2026-11-23 02:08:17,862 [INFO] [MemoryWorker] Current Heap: 225MB
+2026-11-23 02:08:20,921 [INFO] [MemoryWorker] Current Heap: 250MB
+2026-11-23 02:08:23,980 [INFO] [MemoryWorker] Current Heap: 275MB
+2026-11-23 02:08:23,983 [CRITICAL] [MemoryGuard] Memory limit exceeded (275MB >= 256MB) / (Recommend Over 256MB)
+2026-11-23 02:08:23,986 [CRITICAL] [MemoryGuard] Self-terminating process 22715 to prevent system instability.
+
+
+>>> [SYSTEM] SELF-TERMINATED (Memory Limit Exceeded) <<<
+
+/app/run.sh: line 32: 22714 Killed                  "$APP_BIN"
+appuser@123b82407037:~$ MEMORY_LIMIT=512 /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 512 MB
+   CPU_MAX_OCCUPY      : 50 %
+   MULTI_THREAD_ENABLE : true
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=512MB, CPU_MAX_OCCUPY=50%, MULTI_THREAD_ENABLE=True
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 02:08:26,205 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 02:08:26,207 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 512MB                [ OK ]
+ [ CPU    ] Limit: 50%                  [ OK ]
+ [ THREAD ] Concurrency: True           [ WARNING ]
+--------------------------------------------------
+ >>> SYSTEM WARNING: POTENTIAL DEADLOCK IN CONCURRENT MODE.
+==================================================
+
+2026-11-23 02:08:28,219 [WARNING] [AgentWorker] Initializing concurrent transaction processors...
+2026-11-23 02:08:28,222 [WARNING] [System] CAUTION: Strict resource locking is enabled.
+2026-11-23 02:08:33,251 [INFO] [Worker-Thread-1] Process Started. Attempting to lock [Shared_Memory_A]...
+2026-11-23 02:08:33,251 [INFO] [AgentWorker][Worker-Thread-2] Process Started. Attempting to lock [Socket_Pool_B]...
+2026-11-23 02:08:33,251 [INFO] [AgentWorker] Waiting for worker threads to complete transactions...
+2026-11-23 02:08:33,253 [INFO] [AgentWorker][Worker-Thread-1] LOCK ACQUIRED: [Shared_Memory_A]. (Holding...)
+2026-11-23 02:08:33,255 [INFO] [AgentWorker][Worker-Thread-2] LOCK ACQUIRED: [Socket_Pool_B]. (Holding...)
+2026-11-23 02:08:33,259 [INFO] [AgentWorker][Worker-Thread-1] Processing critical data in Memory A...
+2026-11-23 02:08:33,261 [INFO] [AgentWorker][Worker-Thread-2] Establishing network connections in Pool B...
+2026-11-23 02:08:35,273 [INFO] [AgentWorker][Worker-Thread-1] Need resource [Socket_Pool_B] to finish job.
+2026-11-23 02:08:35,274 [INFO] [AgentWorker][Worker-Thread-2] Need resource [Shared_Memory_A] to write logs.
+2026-11-23 02:08:35,275 [INFO] [AgentWorker][Worker-Thread-1] WAITING for [Socket_Pool_B]... (Status: BLOCKED)
+2026-11-23 02:08:35,277 [INFO] [AgentWorker][Worker-Thread-2] WAITING for [Shared_Memory_A]... (Status: BLOCKED)
+^C2026-11-23 02:09:00,319 [INFO] User interrupted process. Shutting down gracefully...
+^CException ignored in: <module 'threading' from '/tmp/_MEIbDFnuG/threading.py'>
+Exception ignored in sys.unraisablehook: <built-in function unraisablehook>
+KeyboardInterrupt
+appuser@123b82407037:~$
+
+---
+
+appuser@123b82407037:~$ MEMORY_LIMIT=512 MULTI_THREAD_ENABLE=false /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 512 MB
+   CPU_MAX_OCCUPY      : 50 %
+   MULTI_THREAD_ENABLE : false
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=512MB, CPU_MAX_OCCUPY=50%, MULTI_THREAD_ENABLE=False
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 02:48:14,858 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 02:48:14,860 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 512MB                [ OK ]
+ [ CPU    ] Limit: 50%                  [ OK ]
+ [ THREAD ] Concurrency: False          [ OK ]
+--------------------------------------------------
+ >>> SYSTEM STATUS: STABLE. STARTING WORKLOAD MONITORING...
+==================================================
+
+2026-11-23 02:48:16,869 [INFO] >>> Scenario Selected: [Healthy System Monitoring]
+
+>>> [SYSTEM] ALL CONFIGURATIONS OPTIMAL. RUNNING STABILITY TEST... <<<
+
+2026-11-23 02:48:16,872 [INFO] [Scheduler] Task Scheduler Initialized.
+2026-11-23 02:48:16,874 [INFO] [Scheduler] Registered Tasks: ['Thread-A', 'Thread-B', 'Thread-C']
+2026-11-23 02:48:16,875 [INFO] [Scheduler] Starting task execution...
+2026-11-23 02:48:16,878 [INFO] [Thread-A] Task Started. Calculating... (20%)
+2026-11-23 02:48:16,930 [INFO] [Thread-A] Calculating... (40%)
+2026-11-23 02:48:16,983 [INFO] [Thread-A] Calculating... (60%)
+2026-11-23 02:48:17,036 [INFO] [Thread-A] Calculating... (80%)
+2026-11-23 02:48:17,088 [INFO] [Thread-A] Task Completed. (100%)
+2026-11-23 02:48:17,140 [INFO] [Thread-B] Task Started. Calculating... (20%)
+2026-11-23 02:48:17,193 [INFO] [Thread-B] Calculating... (40%)
+2026-11-23 02:48:17,245 [INFO] [Thread-B] Calculating... (60%)
+2026-11-23 02:48:17,298 [INFO] [Thread-B] Calculating... (80%)
+2026-11-23 02:48:17,350 [INFO] [Thread-B] Task Completed. (100%)
+2026-11-23 02:48:17,403 [INFO] [Thread-C] Task Started. Calculating... (20%)
+2026-11-23 02:48:17,455 [INFO] [Thread-C] Calculating... (40%)
+2026-11-23 02:48:17,508 [INFO] [Thread-C] Calculating... (60%)
+2026-11-23 02:48:17,560 [INFO] [Thread-C] Calculating... (80%)
+2026-11-23 02:48:17,613 [INFO] [Thread-C] Task Completed. (100%)
+2026-11-23 02:48:17,665 [INFO] [Scheduler] All tasks completed.
+2026-11-23 02:48:17,700 [INFO] [CpuWorker] Started. Maximum CPU Limit: 50%
+2026-11-23 02:48:17,701 [INFO] [MemoryWorker] Current Heap: 25MB
+2026-11-23 02:48:17,703 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 02:48:20,753 [INFO] [MemoryWorker] Current Heap: 50MB
+2026-11-23 02:48:20,821 [INFO] [CpuWorker] Current Load: 10.96%
+2026-11-23 02:48:23,807 [INFO] [MemoryWorker] Current Heap: 75MB
+2026-11-23 02:48:23,939 [INFO] [CpuWorker] Current Load: 16.94%
+2026-11-23 02:48:26,855 [INFO] [MemoryWorker] Current Heap: 100MB
+2026-11-23 02:48:27,054 [INFO] [CpuWorker] Current Load: 20.77%
+2026-11-23 02:48:29,908 [INFO] [MemoryWorker] Current Heap: 125MB
+2026-11-23 02:48:30,170 [INFO] [CpuWorker] Current Load: 22.21%
+2026-11-23 02:48:32,959 [INFO] [MemoryWorker] Current Heap: 150MB
+2026-11-23 02:48:33,285 [INFO] [CpuWorker] Current Load: 26.83%
+2026-11-23 02:48:36,008 [INFO] [MemoryWorker] Current Heap: 175MB
+2026-11-23 02:48:36,402 [INFO] [CpuWorker] Current Load: 32.28%
+2026-11-23 02:48:39,061 [INFO] [MemoryWorker] Current Heap: 200MB
+2026-11-23 02:48:39,521 [INFO] [CpuWorker] Current Load: 32.95%
+2026-11-23 02:48:42,120 [INFO] [MemoryWorker] Current Heap: 225MB
+2026-11-23 02:48:42,639 [INFO] [CpuWorker] Current Load: 42.23%
+2026-11-23 02:48:45,180 [INFO] [MemoryWorker] Current Heap: 250MB
+2026-11-23 02:48:45,758 [INFO] [CpuWorker] Current Load: 44.09%
+2026-11-23 02:48:48,233 [INFO] [MemoryWorker] Current Heap: 275MB
+2026-11-23 02:48:48,877 [INFO] [CpuWorker] Current Load: 47.53%
+2026-11-23 02:48:50,989 [INFO] [CpuWorker] Peak reached (50.00%). Starting cooldown...
+2026-11-23 02:48:51,284 [INFO] [MemoryWorker] Current Heap: 300MB
+2026-11-23 02:48:51,996 [INFO] [CpuWorker] Current Load: 50.00%
+2026-11-23 02:48:54,333 [INFO] [MemoryWorker] Current Heap: 325MB
+2026-11-23 02:48:55,114 [INFO] [CpuWorker] Current Load: 44.04%
+2026-11-23 02:48:57,384 [INFO] [MemoryWorker] Current Heap: 350MB
+2026-11-23 02:48:58,232 [INFO] [CpuWorker] Current Load: 39.34%
+2026-11-23 02:49:00,445 [INFO] [MemoryWorker] Current Heap: 375MB
+2026-11-23 02:49:01,350 [INFO] [CpuWorker] Current Load: 31.71%
+2026-11-23 02:49:03,499 [INFO] [MemoryWorker] Current Heap: 400MB
+2026-11-23 02:49:04,504 [INFO] [CpuWorker] Current Load: 23.56%
+2026-11-23 02:49:06,559 [INFO] [MemoryWorker] Current Heap: 425MB
+2026-11-23 02:49:07,622 [INFO] [CpuWorker] Current Load: 20.27%
+2026-11-23 02:49:09,617 [INFO] [MemoryWorker] Current Heap: 450MB
+2026-11-23 02:49:10,741 [INFO] [CpuWorker] Current Load: 18.32%
+2026-11-23 02:49:12,679 [INFO] [MemoryWorker] Current Heap: 475MB
+2026-11-23 02:49:13,850 [INFO] [CpuWorker] Current Load: 11.36%
+2026-11-23 02:49:15,737 [INFO] [MemoryWorker] Current Heap: 500MB
+2026-11-23 02:49:15,964 [INFO] [CpuWorker] Cooldown complete (5.00%). Resuming load increase...
+2026-11-23 02:49:16,971 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 02:49:18,791 [INFO] [MemoryWorker] Current Heap: 525MB
+2026-11-23 02:49:18,794 [WARNING] [MemoryWorker] Memory Usage Reached Limit (525MB). Starting cleanup...
+2026-11-23 02:49:18,845 [INFO] [System] Memory Cache Flushed. Process Stabilized.
+
+>>> [SYSTEM] MEMORY RECOVERED (Cache Cleared) <<<
+
+2026-11-23 02:49:20,082 [INFO] [CpuWorker] Current Load: 14.46%
+2026-11-23 02:49:23,201 [INFO] [CpuWorker] Current Load: 16.72%
+2026-11-23 02:49:23,902 [INFO] [MemoryWorker] Current Heap: 25MB
+2026-11-23 02:49:26,319 [INFO] [CpuWorker] Current Load: 20.30%
+2026-11-23 02:49:26,966 [INFO] [MemoryWorker] Current Heap: 50MB
+2026-11-23 02:49:29,437 [INFO] [CpuWorker] Current Load: 27.83%
+2026-11-23 02:49:30,018 [INFO] [MemoryWorker] Current Heap: 75MB
+2026-11-23 02:49:32,555 [INFO] [CpuWorker] Current Load: 31.38%
+2026-11-23 02:49:33,064 [INFO] [MemoryWorker] Current Heap: 100MB
+2026-11-23 02:49:35,673 [INFO] [CpuWorker] Current Load: 37.03%
+2026-11-23 02:49:36,113 [INFO] [MemoryWorker] Current Heap: 125MB
+2026-11-23 02:49:38,790 [INFO] [CpuWorker] Current Load: 45.26%
+2026-11-23 02:49:39,160 [INFO] [MemoryWorker] Current Heap: 150MB
+2026-11-23 02:49:41,906 [INFO] [CpuWorker] Current Load: 48.07%
+2026-11-23 02:49:42,206 [INFO] [MemoryWorker] Current Heap: 175MB
+^CTraceback (most recent call last):
+  File "os_pbl.py", line 845, in <module>
+  File "os_pbl.py", line 777, in run_scenario
+  File "threading.py", line 1096, in join
+  File "threading.py", line 1116, in _wait_for_tstate_lock
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "os_pbl.py", line 848, in <module>
+  File "logging/__init__.py", line 1477, in info
+  File "logging/__init__.py", line 1622, in _log
+  File "logging/__init__.py", line 1591, in makeRecord
+  File "logging/__init__.py", line 317, in __init__
+  File "posixpath.py", line 144, in basename
+KeyboardInterrupt
+[PYI-36371:ERROR] Failed to execute script 'os_pbl' due to unhandled exception!
+2026-11-23 02:49:45,024 [INFO] [CpuWorker] Current Load: 49.42%
+2026-11-23 02:49:45,259 [INFO] [MemoryWorker] Current Heap: 200MB
+^CException ignored in: <module 'threading' from '/tmp/_MEIOAU6UO/threading.py'>
+Traceback (most recent call last):
+  File "threading.py", line 1567, in _shutdown
+KeyboardInterrupt:
+appuser@123b82407037:~$
+
+---
+
+appuser@123b82407037:~$ MEMORY_LIMIT=512 MULTI_THREAD_ENABLE=false CPU_MAX_OCCUPY=20 /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 512 MB
+   CPU_MAX_OCCUPY      : 20 %
+   MULTI_THREAD_ENABLE : false
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=512MB, CPU_MAX_OCCUPY=20%, MULTI_THREAD_ENABLE=False
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 02:59:02,185 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 02:59:02,186 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 512MB                [ OK ]
+ [ CPU    ] Limit: 20%                  [ OK ]
+ [ THREAD ] Concurrency: False          [ OK ]
+--------------------------------------------------
+ >>> SYSTEM STATUS: STABLE. STARTING WORKLOAD MONITORING...
+==================================================
+
+2026-11-23 02:59:04,197 [INFO] >>> Scenario Selected: [Healthy System Monitoring]
+
+>>> [SYSTEM] ALL CONFIGURATIONS OPTIMAL. RUNNING STABILITY TEST... <<<
+
+2026-11-23 02:59:04,199 [INFO] [Scheduler] Task Scheduler Initialized.
+2026-11-23 02:59:04,202 [INFO] [Scheduler] Registered Tasks: ['Thread-A', 'Thread-B', 'Thread-C']
+2026-11-23 02:59:04,205 [INFO] [Scheduler] Starting task execution...
+2026-11-23 02:59:04,206 [INFO] [Thread-A] Task Started. Calculating... (20%)
+2026-11-23 02:59:04,258 [INFO] [Thread-A] Calculating... (40%)
+2026-11-23 02:59:04,312 [INFO] [Thread-A] Calculating... (60%)
+2026-11-23 02:59:04,364 [INFO] [Thread-A] Calculating... (80%)
+2026-11-23 02:59:04,417 [INFO] [Thread-A] Task Completed. (100%)
+2026-11-23 02:59:04,470 [INFO] [Thread-B] Task Started. Calculating... (20%)
+2026-11-23 02:59:04,522 [INFO] [Thread-B] Calculating... (40%)
+2026-11-23 02:59:04,575 [INFO] [Thread-B] Calculating... (60%)
+2026-11-23 02:59:04,627 [INFO] [Thread-B] Calculating... (80%)
+2026-11-23 02:59:04,680 [INFO] [Thread-B] Task Completed. (100%)
+2026-11-23 02:59:04,733 [INFO] [Thread-C] Task Started. Calculating... (20%)
+2026-11-23 02:59:04,785 [INFO] [Thread-C] Calculating... (40%)
+2026-11-23 02:59:04,838 [INFO] [Thread-C] Calculating... (60%)
+2026-11-23 02:59:04,890 [INFO] [Thread-C] Calculating... (80%)
+2026-11-23 02:59:04,942 [INFO] [Thread-C] Task Completed. (100%)
+2026-11-23 02:59:04,994 [INFO] [Scheduler] All tasks completed.
+2026-11-23 02:59:05,031 [INFO] [MemoryWorker] Current Heap: 25MB
+2026-11-23 02:59:05,031 [INFO] [CpuWorker] Started. Maximum CPU Limit: 20%
+2026-11-23 02:59:05,035 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 02:59:08,080 [INFO] [MemoryWorker] Current Heap: 50MB
+2026-11-23 02:59:08,153 [INFO] [CpuWorker] Current Load: 12.35%
+2026-11-23 02:59:11,128 [INFO] [MemoryWorker] Current Heap: 75MB
+2026-11-23 02:59:11,272 [INFO] [CpuWorker] Current Load: 16.16%
+2026-11-23 02:59:13,385 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
+2026-11-23 02:59:14,184 [INFO] [MemoryWorker] Current Heap: 100MB
+2026-11-23 02:59:14,392 [INFO] [CpuWorker] Current Load: 20.00%
+2026-11-23 02:59:17,236 [INFO] [MemoryWorker] Current Heap: 125MB
+2026-11-23 02:59:17,510 [INFO] [CpuWorker] Current Load: 14.14%
+2026-11-23 02:59:20,283 [INFO] [MemoryWorker] Current Heap: 150MB
+2026-11-23 02:59:20,629 [INFO] [CpuWorker] Current Load: 13.19%
+2026-11-23 02:59:23,330 [INFO] [MemoryWorker] Current Heap: 175MB
+2026-11-23 02:59:23,746 [INFO] [CpuWorker] Current Load: 8.39%
+2026-11-23 02:59:26,378 [INFO] [MemoryWorker] Current Heap: 200MB
+2026-11-23 02:59:26,858 [INFO] [CpuWorker] Current Load: 5.14%
+2026-11-23 02:59:28,971 [INFO] [CpuWorker] Cooldown complete (5.00%). Resuming load increase...
+2026-11-23 02:59:29,425 [INFO] [MemoryWorker] Current Heap: 225MB
+2026-11-23 02:59:29,978 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 02:59:32,469 [INFO] [MemoryWorker] Current Heap: 250MB
+2026-11-23 02:59:33,096 [INFO] [CpuWorker] Current Load: 11.68%
+2026-11-23 02:59:35,208 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
+2026-11-23 02:59:35,517 [INFO] [MemoryWorker] Current Heap: 275MB
+2026-11-23 02:59:36,216 [INFO] [CpuWorker] Current Load: 20.00%
+2026-11-23 02:59:38,569 [INFO] [MemoryWorker] Current Heap: 300MB
+2026-11-23 02:59:39,334 [INFO] [CpuWorker] Current Load: 15.32%
+2026-11-23 02:59:41,627 [INFO] [MemoryWorker] Current Heap: 325MB
+2026-11-23 02:59:42,450 [INFO] [CpuWorker] Current Load: 14.18%
+2026-11-23 02:59:44,681 [INFO] [MemoryWorker] Current Heap: 350MB
+2026-11-23 02:59:45,566 [INFO] [CpuWorker] Current Load: 10.52%
+2026-11-23 02:59:47,732 [INFO] [MemoryWorker] Current Heap: 375MB
+2026-11-23 02:59:48,681 [INFO] [CpuWorker] Current Load: 9.48%
+2026-11-23 02:59:50,787 [INFO] [MemoryWorker] Current Heap: 400MB
+2026-11-23 02:59:50,793 [INFO] [CpuWorker] Cooldown complete (5.00%). Resuming load increase...
+2026-11-23 02:59:51,800 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 02:59:53,838 [INFO] [MemoryWorker] Current Heap: 425MB
+2026-11-23 02:59:54,918 [INFO] [CpuWorker] Current Load: 12.07%
+2026-11-23 02:59:56,886 [INFO] [MemoryWorker] Current Heap: 450MB
+2026-11-23 02:59:58,036 [INFO] [CpuWorker] Current Load: 15.14%
+2026-11-23 02:59:59,946 [INFO] [MemoryWorker] Current Heap: 475MB
+2026-11-23 03:00:01,154 [INFO] [CpuWorker] Current Load: 18.18%
+2026-11-23 03:00:03,005 [INFO] [MemoryWorker] Current Heap: 500MB
+2026-11-23 03:00:03,267 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
+2026-11-23 03:00:04,274 [INFO] [CpuWorker] Current Load: 20.00%
+2026-11-23 03:00:06,058 [INFO] [MemoryWorker] Current Heap: 525MB
+2026-11-23 03:00:06,060 [WARNING] [MemoryWorker] Memory Usage Reached Limit (525MB). Starting cleanup...
+2026-11-23 03:00:06,108 [INFO] [System] Memory Cache Flushed. Process Stabilized.
+
+>>> [SYSTEM] MEMORY RECOVERED (Cache Cleared) <<<
+
+2026-11-23 03:00:07,392 [INFO] [CpuWorker] Current Load: 19.25%
+2026-11-23 03:00:10,508 [INFO] [CpuWorker] Current Load: 12.61%
+2026-11-23 03:00:11,155 [INFO] [MemoryWorker] Current Heap: 25MB
+2026-11-23 03:00:12,621 [INFO] [CpuWorker] Cooldown complete (5.00%). Resuming load increase...
+2026-11-23 03:00:13,628 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 03:00:14,208 [INFO] [MemoryWorker] Current Heap: 50MB
+2026-11-23 03:00:16,747 [INFO] [CpuWorker] Current Load: 14.34%
+2026-11-23 03:00:17,269 [INFO] [MemoryWorker] Current Heap: 75MB
+2026-11-23 03:00:18,859 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
+^CTraceback (most recent call last):
+  File "os_pbl.py", line 845, in <module>
+  File "os_pbl.py", line 777, in run_scenario
+  File "threading.py", line 1096, in join
+  File "threading.py", line 1116, in _wait_for_tstate_lock
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "os_pbl.py", line 848, in <module>
+  File "logging/__init__.py", line 1477, in info
+  File "logging/__init__.py", line 1624, in _log
+  File "logging/__init__.py", line 1634, in handle
+  File "logging/__init__.py", line 1696, in callHandlers
+  File "logging/__init__.py", line 968, in handle
+  File "logging/handlers.py", line 73, in emit
+  File "logging/handlers.py", line 191, in shouldRollover
+  File "genericpath.py", line 19, in exists
+KeyboardInterrupt
+[PYI-40179:ERROR] Failed to execute script 'os_pbl' due to unhandled exception!
+2026-11-23 03:00:19,867 [INFO] [CpuWorker] Current Load: 20.00%
+2026-11-23 03:00:20,321 [INFO] [MemoryWorker] Current Heap: 100MB
+^CException ignored in: <module 'threading' from '/tmp/_MEIPqhMLw/threading.py'>
+Exception ignored in sys.unraisablehook: <built-in function unraisablehook>
+KeyboardInterrupt
+appuser@123b82407037:~$ MEMORY_LIMIT=512 MULTI_THREAD_ENABLE=false CPU_MAX_OCCUPY=20 /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 512 MB
+   CPU_MAX_OCCUPY      : 20 %
+   MULTI_THREAD_ENABLE : false
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=512MB, CPU_MAX_OCCUPY=20%, MULTI_THREAD_ENABLE=False
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 03:00:23,540 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 03:00:23,542 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 512MB                [ OK ]
+ [ CPU    ] Limit: 20%                  [ OK ]
+ [ THREAD ] Concurrency: False          [ OK ]
+--------------------------------------------------
+ >>> SYSTEM STATUS: STABLE. STARTING WORKLOAD MONITORING...
+==================================================
+
+2026-11-23 03:00:25,553 [INFO] >>> Scenario Selected: [Healthy System Monitoring]
+
+>>> [SYSTEM] ALL CONFIGURATIONS OPTIMAL. RUNNING STABILITY TEST... <<<
+
+2026-11-23 03:00:25,556 [INFO] [Scheduler] Task Scheduler Initialized.
+2026-11-23 03:00:25,558 [INFO] [Scheduler] Registered Tasks: ['Thread-A', 'Thread-B', 'Thread-C']
+2026-11-23 03:00:25,560 [INFO] [Scheduler] Starting task execution...
+2026-11-23 03:00:25,562 [INFO] [Thread-A] Task Started. Calculating... (20%)
+2026-11-23 03:00:25,614 [INFO] [Thread-A] Calculating... (40%)
+2026-11-23 03:00:25,666 [INFO] [Thread-A] Calculating... (60%)
+2026-11-23 03:00:25,719 [INFO] [Thread-A] Calculating... (80%)
+2026-11-23 03:00:25,771 [INFO] [Thread-A] Task Completed. (100%)
+2026-11-23 03:00:25,824 [INFO] [Thread-B] Task Started. Calculating... (20%)
+2026-11-23 03:00:25,876 [INFO] [Thread-B] Calculating... (40%)
+2026-11-23 03:00:25,929 [INFO] [Thread-B] Calculating... (60%)
+2026-11-23 03:00:25,981 [INFO] [Thread-B] Calculating... (80%)
+2026-11-23 03:00:26,034 [INFO] [Thread-B] Task Completed. (100%)
+2026-11-23 03:00:26,086 [INFO] [Thread-C] Task Started. Calculating... (20%)
+2026-11-23 03:00:26,139 [INFO] [Thread-C] Calculating... (40%)
+2026-11-23 03:00:26,192 [INFO] [Thread-C] Calculating... (60%)
+2026-11-23 03:00:26,244 [INFO] [Thread-C] Calculating... (80%)
+2026-11-23 03:00:26,296 [INFO] [Thread-C] Task Completed. (100%)
+2026-11-23 03:00:26,349 [INFO] [Scheduler] All tasks completed.
+2026-11-23 03:00:26,384 [INFO] [CpuWorker] Started. Maximum CPU Limit: 20%
+2026-11-23 03:00:26,384 [INFO] [MemoryWorker] Current Heap: 25MB
+2026-11-23 03:00:26,387 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 03:00:29,435 [INFO] [MemoryWorker] Current Heap: 50MB
+2026-11-23 03:00:29,506 [INFO] [CpuWorker] Current Load: 12.11%
+2026-11-23 03:00:32,483 [INFO] [MemoryWorker] Current Heap: 75MB
+2026-11-23 03:00:32,624 [INFO] [CpuWorker] Current Load: 12.43%
+2026-11-23 03:00:34,737 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
+2026-11-23 03:00:35,532 [INFO] [MemoryWorker] Current Heap: 100MB
+2026-11-23 03:00:35,744 [INFO] [CpuWorker] Current Load: 20.00%
+2026-11-23 03:00:38,581 [INFO] [MemoryWorker] Current Heap: 125MB
+2026-11-23 03:00:38,861 [INFO] [CpuWorker] Current Load: 13.01%
+2026-11-23 03:00:40,974 [INFO] [CpuWorker] Cooldown complete (5.00%). Resuming load increase...
+2026-11-23 03:00:41,630 [INFO] [MemoryWorker] Current Heap: 150MB
+2026-11-23 03:00:41,981 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 03:00:44,679 [INFO] [MemoryWorker] Current Heap: 175MB
+2026-11-23 03:00:45,094 [INFO] [CpuWorker] Current Load: 12.04%
+2026-11-23 03:00:47,727 [INFO] [MemoryWorker] Current Heap: 200MB
+2026-11-23 03:00:48,210 [INFO] [CpuWorker] Current Load: 16.36%
+2026-11-23 03:00:50,323 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
+2026-11-23 03:00:50,775 [INFO] [MemoryWorker] Current Heap: 225MB
+2026-11-23 03:00:51,329 [INFO] [CpuWorker] Current Load: 20.00%
+2026-11-23 03:00:53,823 [INFO] [MemoryWorker] Current Heap: 250MB
+2026-11-23 03:00:54,447 [INFO] [CpuWorker] Current Load: 13.28%
+2026-11-23 03:00:56,872 [INFO] [MemoryWorker] Current Heap: 275MB
+2026-11-23 03:00:57,565 [INFO] [CpuWorker] Current Load: 5.74%
+2026-11-23 03:00:59,678 [INFO] [CpuWorker] Cooldown complete (5.00%). Resuming load increase...
+2026-11-23 03:00:59,919 [INFO] [MemoryWorker] Current Heap: 300MB
+2026-11-23 03:01:00,685 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 03:01:02,967 [INFO] [MemoryWorker] Current Heap: 325MB
+2026-11-23 03:01:03,804 [INFO] [CpuWorker] Current Load: 12.01%
+2026-11-23 03:01:06,020 [INFO] [MemoryWorker] Current Heap: 350MB
+2026-11-23 03:01:06,921 [INFO] [CpuWorker] Current Load: 19.77%
+2026-11-23 03:01:09,034 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
+2026-11-23 03:01:09,073 [INFO] [MemoryWorker] Current Heap: 375MB
+^C2026-11-23 03:01:09,576 [INFO] User interrupted process. Shutting down gracefully...
+2026-11-23 03:01:10,041 [INFO] [CpuWorker] Current Load: 20.00%
+2026-11-23 03:01:12,122 [INFO] [MemoryWorker] Current Heap: 400MB
+^CException ignored in: <object repr() failed>
+Traceback (most recent call last):
+  File "threading.py", line 1567, in _shutdown
+KeyboardInterrupt:
+appuser@123b82407037:~$
+
+---
+
+appuser@123b82407037:~$ MEMORY_LIMIT=512 MULTI_THREAD_ENABLE=false CPU_MAX_OCCUPY=90 /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 512 MB
+   CPU_MAX_OCCUPY      : 90 %
+   MULTI_THREAD_ENABLE : false
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=512MB, CPU_MAX_OCCUPY=90%, MULTI_THREAD_ENABLE=False
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 03:05:41,757 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 03:05:41,760 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 512MB                [ OK ]
+ [ CPU    ] Limit: 90%                  [ WARNING: Recommend Under 50% ]
+ [ THREAD ] Concurrency: False          [ OK ]
+--------------------------------------------------
+ >>> SYSTEM STATUS: STABLE. STARTING WORKLOAD MONITORING...
+==================================================
+
+2026-11-23 03:05:43,772 [INFO] [CpuWorker] Started. Maximum CPU Limit: 90%
+2026-11-23 03:05:43,774 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 03:05:46,893 [INFO] [CpuWorker] Current Load: 13.34%
+2026-11-23 03:05:50,011 [INFO] [CpuWorker] Current Load: 17.17%
+2026-11-23 03:05:53,129 [INFO] [CpuWorker] Current Load: 18.96%
+2026-11-23 03:05:56,245 [INFO] [CpuWorker] Current Load: 27.39%
+2026-11-23 03:05:59,362 [INFO] [CpuWorker] Current Load: 36.85%
+2026-11-23 03:06:02,480 [INFO] [CpuWorker] Current Load: 42.77%
+2026-11-23 03:06:05,598 [INFO] [CpuWorker] Current Load: 52.36%
+2026-11-23 03:06:05,701 [CRITICAL] [CpuWorker] CPU Threshold Violated! (52.36%).
+
+>>> [SYSTEM] WATCHDOG: INITIATING EMERGENCY ABORT (SIGTERM) <<<
+
+Terminated
+appuser@123b82407037:~$ MEMORY_LIMIT=512 MULTI_THREAD_ENABLE=false CPU_MAX_OCCUPY=90 /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 512 MB
+   CPU_MAX_OCCUPY      : 90 %
+   MULTI_THREAD_ENABLE : false
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+   ... Running as service user 'appuser' (uid=1001)
+[2/6] Verifying Environment Variables     [OK]
+   ... All required Envs correct
+[3/6] Checking Required Files             [OK]
+   ... Verified 'secret.key' with correct key string.
+[4/6] Checking Port Availability          [OK]
+   ... Port 15034 is available.
+[5/6] Verifying Log Permission            [OK]
+   ... Log directory is writable: /home/appuser/agent-app/logs
+[6/6] Verifying Mission Environment       [OK]
+   ... MEMORY_LIMIT=512MB, CPU_MAX_OCCUPY=90%, MULTI_THREAD_ENABLE=False
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 03:06:20,317 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 03:06:20,319 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 512MB                [ OK ]
+ [ CPU    ] Limit: 90%                  [ WARNING: Recommend Under 50% ]
+ [ THREAD ] Concurrency: False          [ OK ]
+--------------------------------------------------
+ >>> SYSTEM STATUS: STABLE. STARTING WORKLOAD MONITORING...
+==================================================
+
+2026-11-23 03:06:22,331 [INFO] [CpuWorker] Started. Maximum CPU Limit: 90%
+2026-11-23 03:06:22,333 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 03:06:25,451 [INFO] [CpuWorker] Current Load: 7.76%
+2026-11-23 03:06:28,565 [INFO] [CpuWorker] Current Load: 10.34%
+2026-11-23 03:06:31,684 [INFO] [CpuWorker] Current Load: 16.83%
+2026-11-23 03:06:34,802 [INFO] [CpuWorker] Current Load: 25.40%
+2026-11-23 03:06:37,920 [INFO] [CpuWorker] Current Load: 27.77%
+2026-11-23 03:06:41,038 [INFO] [CpuWorker] Current Load: 36.95%
+2026-11-23 03:06:44,153 [INFO] [CpuWorker] Current Load: 44.24%
+2026-11-23 03:06:47,272 [INFO] [CpuWorker] Current Load: 49.74%
+2026-11-23 03:06:50,390 [INFO] [CpuWorker] Current Load: 50.27%
+2026-11-23 03:06:50,492 [CRITICAL] [CpuWorker] CPU Threshold Violated! (50.27%).
+
+>>> [SYSTEM] WATCHDOG: INITIATING EMERGENCY ABORT (SIGTERM) <<<
+
+Terminated
+appuser@123b82407037:~$

@@ -1,0 +1,68 @@
+================================================================================
+[EVIDENCE: CPU-02] AFTER - CPU_MAX_OCCUPY=20% (Cooldown 순환 및 정상 생존)
+================================================================================
+1. 실행 조건
+--------------------------------------------------------------------------------
+- MEMORY_LIMIT        : 512 MB
+- CPU_MAX_OCCUPY      : 20 % (임계치를 안전 범위 20%로 제한)
+- MULTI_THREAD_ENABLE : false
+- 실행 일시           : 2026-11-23 02:59:02
+
+--------------------------------------------------------------------------------
+2. 애플리케이션 실행 로그 (term_run.txt 발췌)
+--------------------------------------------------------------------------------
+appuser@123b82407037:~$ MEMORY_LIMIT=512 MULTI_THREAD_ENABLE=false CPU_MAX_OCCUPY=20 /app/run.sh
+==================================================
+🚀 Executing agent-leak-app (x86_64)
+   MEMORY_LIMIT        : 512 MB
+   CPU_MAX_OCCUPY      : 20 %
+   MULTI_THREAD_ENABLE : false
+==================================================
+>>> Starting Agent Boot Sequence...
+[1/6] Checking User Account               [OK]
+[2/6] Verifying Environment Variables     [OK]
+[3/6] Checking Required Files             [OK]
+[4/6] Checking Port Availability          [OK]
+[5/6] Verifying Log Permission            [OK]
+[6/6] Verifying Mission Environment       [OK]
+------------------------------------------------------------
+All Boot Checks Passed!
+Agent READY
+2026-11-23 02:59:02,185 [INFO] [SafetyGuard] Process priority lowered (nice=10).
+2026-11-23 02:59:02,186 [INFO] Agent listening at port 15034
+
+==================================================
+ [ Agent Initiate ] Resource Check
+==================================================
+ [ MEMORY ] Limit: 512MB                [ OK ]
+ [ CPU    ] Limit: 20%                  [ OK ]
+ [ THREAD ] Concurrency: False          [ OK ]
+--------------------------------------------------
+ >>> SYSTEM STATUS: STABLE. STARTING WORKLOAD MONITORING...
+==================================================
+
+2026-11-23 02:59:05,031 [INFO] [CpuWorker] Started. Maximum CPU Limit: 20%
+2026-11-23 02:59:05,035 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 02:59:08,153 [INFO] [CpuWorker] Current Load: 12.35%
+2026-11-23 02:59:11,272 [INFO] [CpuWorker] Current Load: 16.16%
+2026-11-23 02:59:13,385 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
+2026-11-23 02:59:14,392 [INFO] [CpuWorker] Current Load: 20.00%
+2026-11-23 02:59:17,510 [INFO] [CpuWorker] Current Load: 14.14%
+2026-11-23 02:59:20,629 [INFO] [CpuWorker] Current Load: 13.19%
+2026-11-23 02:59:23,746 [INFO] [CpuWorker] Current Load: 8.39%
+2026-11-23 02:59:26,858 [INFO] [CpuWorker] Current Load: 5.14%
+2026-11-23 02:59:28,971 [INFO] [CpuWorker] Cooldown complete (5.00%). Resuming load increase...
+2026-11-23 02:59:29,978 [INFO] [CpuWorker] Current Load: 5.00%
+2026-11-23 02:59:33,096 [INFO] [CpuWorker] Current Load: 11.68%
+2026-11-23 02:59:35,208 [INFO] [CpuWorker] Peak reached (20.00%). Starting cooldown...
+(※ 주기적으로 20% 도달 시 쿨다운하며 Watchdog 강제 종료 없이 지속 생존)
+
+--------------------------------------------------------------------------------
+3. Before & After 비교 분석 요약
+--------------------------------------------------------------------------------
+- Before (CPU_MAX_OCCUPY=90%) :
+  * 부하가 안전 임계치(50%)를 초과(52.36%)하여 약 24초 만에 Watchdog에 의해 SIGTERM 강제 종료
+- After  (CPU_MAX_OCCUPY=20%) :
+  * CPU 한도가 20%로 제한되어 Peak 도달 시 자동으로 Cooldown 모드로 진입
+  * Watchdog 개입 없이 프로세스가 안정적으로 지속 실행됨 (생존 시간 무제한 유지 가능)
+- 입증 결과: 특정 프로세스의 CPU 독점을 방어하는 과점유 방지 정책(Watchdog)의 작동 메커니즘 확인 및 자원 제한을 통한 시스템 안정성 확보 입증
